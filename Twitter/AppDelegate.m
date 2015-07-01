@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "TweetViewController.h"
+#import "TwitterClient.h"
+#import "User.h"
+#import "Tweet.h"
 
 @interface AppDelegate ()
 
@@ -17,7 +22,54 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLogout) name:UserLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLogin) name:UserLoginNotification object:nil];
+
+    
+    User *user = [User getUser];
+    UINavigationController *navgationController = [[UINavigationController alloc] init];
+
+    self.window.rootViewController = navgationController;
+
+    
+    if (user != nil) {
+        NSLog(@"User %@ login", user.name);
+        [navgationController pushViewController:[[TweetViewController alloc]init] animated:YES];
+        
+        
+    } else {
+        NSLog(@"User logout");
+        [navgationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+    }
+    
+    [self.window makeKeyAndVisible];
+
+   
     return YES;
+}
+
+- (void)onLogout {
+    NSLog(@"User logout");
+
+    UINavigationController *navgationController = [[UINavigationController alloc] init];
+    
+    self.window.rootViewController = navgationController;
+
+    [navgationController pushViewController: [[LoginViewController alloc] init] animated:YES];
+
+}
+
+- (void)onLogin {
+    NSLog(@"User login");
+    
+    UINavigationController *navgationController = [[UINavigationController alloc] init];
+    
+    self.window.rootViewController = navgationController;
+    
+    [navgationController pushViewController: [[TweetViewController alloc] init] animated:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -40,6 +92,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    [[TwitterClient sharedInstance] openUrl:url];
+        
+    return YES;
 }
 
 @end

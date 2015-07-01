@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReplyTweetView">
+            <connections>
+                <outlet property="guestureRecognizer" destination="lMI-vo-4ZX" id="JVm-oy-ZYY"/>
+                <outlet property="inputText" destination="aOC-vs-mxb" id="xYz-H6-C3l"/>
+                <outlet property="tweetText" destination="t6F-lm-wzT" id="7Fz-tG-o7O"/>
+                <outlet property="userImage" destination="zhk-sz-Kqq" id="JjJ-05-Um6"/>
+                <outlet property="userLabel" destination="nIi-7s-9H8" id="g4D-dX-keJ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zhk-sz-Kqq">
+                    <rect key="frame" x="37" y="70" width="48" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="dAq-e8-hj7"/>
+                        <constraint firstAttribute="width" constant="48" id="yeU-Ku-Foj"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIi-7s-9H8">
+                    <rect key="frame" x="109" y="70" width="203" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6F-lm-wzT">
+                    <rect key="frame" x="37" y="126" width="265" height="140"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aOC-vs-mxb">
+                    <rect key="frame" x="37" y="274" width="265" height="128"/>
+                    <color key="backgroundColor" red="0.61101140499999995" green="1" blue="0.99848028710000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="RyG-t7-cCh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="lMI-vo-4ZX" id="pvB-7x-f9N"/>
+                    </connections>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="zhk-sz-Kqq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="40p-DS-f4B"/>
+                <constraint firstAttribute="trailing" secondItem="aOC-vs-mxb" secondAttribute="trailing" constant="18" id="Cqs-LB-SGW"/>
+                <constraint firstItem="nIi-7s-9H8" firstAttribute="leading" secondItem="zhk-sz-Kqq" secondAttribute="trailing" constant="24" id="FMc-fo-5kb"/>
+                <constraint firstAttribute="trailing" secondItem="t6F-lm-wzT" secondAttribute="trailing" constant="18" id="Gsd-Sx-gcF"/>
+                <constraint firstItem="aOC-vs-mxb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="274" id="N33-1b-nT1"/>
+                <constraint firstItem="aOC-vs-mxb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="PWF-na-5so"/>
+                <constraint firstItem="t6F-lm-wzT" firstAttribute="top" secondItem="zhk-sz-Kqq" secondAttribute="bottom" constant="8" id="WFG-Tx-5d0"/>
+                <constraint firstItem="aOC-vs-mxb" firstAttribute="top" secondItem="t6F-lm-wzT" secondAttribute="bottom" constant="8" id="fHD-59-nwp"/>
+                <constraint firstItem="t6F-lm-wzT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="fkm-C9-dwu"/>
+                <constraint firstAttribute="trailing" secondItem="nIi-7s-9H8" secondAttribute="trailing" constant="8" id="jLo-7V-jCT"/>
+                <constraint firstItem="zhk-sz-Kqq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="ulF-sa-33f"/>
+                <constraint firstItem="nIi-7s-9H8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="wXO-ST-VEQ"/>
+            </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="lMI-vo-4ZX" appends="YES" id="EXt-QW-VjS"/>
+            </connections>
+            <point key="canvasLocation" x="307" y="235"/>
+        </view>
+        <tapGestureRecognizer id="lMI-vo-4ZX"/>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
