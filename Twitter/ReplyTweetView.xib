@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReplyTweetView">
             <connections>
-                <outlet property="guestureRecognizer" destination="lMI-vo-4ZX" id="JVm-oy-ZYY"/>
                 <outlet property="inputText" destination="aOC-vs-mxb" id="xYz-H6-C3l"/>
                 <outlet property="tweetText" destination="t6F-lm-wzT" id="7Fz-tG-o7O"/>
                 <outlet property="userImage" destination="zhk-sz-Kqq" id="JjJ-05-Um6"/>
@@ -46,9 +45,6 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    <connections>
-                        <outlet property="delegate" destination="lMI-vo-4ZX" id="pvB-7x-f9N"/>
-                    </connections>
                 </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -68,11 +64,15 @@
                 <constraint firstItem="nIi-7s-9H8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="wXO-ST-VEQ"/>
             </constraints>
             <connections>
-                <outletCollection property="gestureRecognizers" destination="lMI-vo-4ZX" appends="YES" id="EXt-QW-VjS"/>
+                <outletCollection property="gestureRecognizers" destination="bDb-EP-ozT" appends="YES" id="xOI-TD-VOf"/>
             </connections>
             <point key="canvasLocation" x="307" y="235"/>
         </view>
-        <tapGestureRecognizer id="lMI-vo-4ZX"/>
+        <tapGestureRecognizer id="bDb-EP-ozT">
+            <connections>
+                <action selector="onTouched:" destination="-1" id="mTd-as-2YV"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

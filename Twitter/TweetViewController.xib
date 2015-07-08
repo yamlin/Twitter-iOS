@@ -30,7 +30,7 @@
                 <constraint firstItem="Y1X-LL-adD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qtM-VH-9gM"/>
                 <constraint firstAttribute="bottom" secondItem="Y1X-LL-adD" secondAttribute="bottom" id="vXz-aa-u5G"/>
             </constraints>
-            <point key="canvasLocation" x="396" y="245"/>
+            <point key="canvasLocation" x="363" y="227"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

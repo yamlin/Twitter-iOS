@@ -32,6 +32,7 @@ NSString * const UserLogoutNotification = @"UserLogoutNotification";
         self.screenName = dict[@"screen_name"];
         self.profileImageUrl = dict[@"profile_image_url"];
         self.tagLine = dict[@"description"];
+        self.uid = dict[@"id_str"];
     }
     
     return self;
@@ -42,9 +43,6 @@ static User *_currentUser = nil;
 NSString * const kCurrentUser = @"kCurrentUserKey";
 
 + (User *)getUser {
-    
-
-    
     if (_currentUser == nil) {
         NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:kCurrentUser];
         if (data != nil) {

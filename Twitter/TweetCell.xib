@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -41,8 +42,11 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUj-XK-XpA" userLabel="reply">
-                        <rect key="frame" x="100" y="53" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUj-XK-XpA" userLabel="reply">
+                        <rect key="frame" x="85" y="53" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="388-HK-hqv"/>
+                        </constraints>
                         <state key="normal" image="reply.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -50,8 +54,8 @@
                             <action selector="onReply:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="atM-yy-QLd"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21c-kM-Cdb" userLabel="retweet">
-                        <rect key="frame" x="166" y="53" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21c-kM-Cdb" userLabel="retweet">
+                        <rect key="frame" x="151" y="53" width="52" height="30"/>
                         <state key="normal" image="retweet.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -59,8 +63,11 @@
                             <action selector="onRetweet:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mCt-Ln-WtX"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxV-wH-sCd" userLabel="favorite">
-                        <rect key="frame" x="232" y="53" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxV-wH-sCd" userLabel="favorite">
+                        <rect key="frame" x="239" y="53" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="WH2-Jo-51p"/>
+                        </constraints>
                         <state key="normal" image="favorite.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -80,16 +87,28 @@
                     <constraint firstItem="lLN-ZF-ZMk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="4Ty-Hv-J7w"/>
                     <constraint firstItem="Jsg-i9-WDn" firstAttribute="leading" secondItem="g7h-6T-T14" secondAttribute="trailing" constant="-212" id="6qP-Hx-hgi"/>
                     <constraint firstAttribute="trailing" secondItem="lLN-ZF-ZMk" secondAttribute="trailing" id="7fS-fe-Pl9"/>
+                    <constraint firstItem="21c-kM-Cdb" firstAttribute="leading" secondItem="WUj-XK-XpA" secondAttribute="trailing" constant="36" id="I7b-8w-3va"/>
                     <constraint firstItem="CIM-7I-LX7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ioy-vY-ven"/>
+                    <constraint firstItem="WUj-XK-XpA" firstAttribute="baseline" secondItem="nxV-wH-sCd" secondAttribute="baseline" id="LRj-m2-Kjb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="nxV-wH-sCd" secondAttribute="trailing" constant="43" id="Lf4-Hs-cSb"/>
+                    <constraint firstItem="WUj-XK-XpA" firstAttribute="baseline" secondItem="21c-kM-Cdb" secondAttribute="baseline" id="Ncd-mH-zSx"/>
+                    <constraint firstItem="WUj-XK-XpA" firstAttribute="leading" secondItem="CIM-7I-LX7" secondAttribute="trailing" constant="8" id="ONd-vj-PXN"/>
+                    <constraint firstItem="WUj-XK-XpA" firstAttribute="firstBaseline" secondItem="nxV-wH-sCd" secondAttribute="firstBaseline" id="Olp-h3-z5Q"/>
+                    <constraint firstItem="WUj-XK-XpA" firstAttribute="top" secondItem="21c-kM-Cdb" secondAttribute="top" id="Tbq-h5-o93"/>
                     <constraint firstItem="lLN-ZF-ZMk" firstAttribute="top" secondItem="CIM-7I-LX7" secondAttribute="bottom" constant="14" id="WfP-8U-kpv"/>
+                    <constraint firstItem="nxV-wH-sCd" firstAttribute="leading" secondItem="21c-kM-Cdb" secondAttribute="trailing" constant="36" id="X8e-iT-uoj"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dL7-zr-hcQ" secondAttribute="trailing" constant="-38" id="Y0s-nZ-Z2j"/>
                     <constraint firstItem="g7h-6T-T14" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Yyd-yq-lEG"/>
+                    <constraint firstItem="WUj-XK-XpA" firstAttribute="top" secondItem="nxV-wH-sCd" secondAttribute="top" id="bgX-XP-2k0"/>
                     <constraint firstItem="dL7-zr-hcQ" firstAttribute="top" secondItem="Jsg-i9-WDn" secondAttribute="bottom" constant="-12" id="c78-0u-hym"/>
+                    <constraint firstItem="WUj-XK-XpA" firstAttribute="firstBaseline" secondItem="21c-kM-Cdb" secondAttribute="firstBaseline" id="csF-ND-5jW"/>
                     <constraint firstAttribute="trailing" secondItem="Jsg-i9-WDn" secondAttribute="trailing" constant="133" id="eXD-L5-opn"/>
                     <constraint firstItem="Jsg-i9-WDn" firstAttribute="leading" secondItem="CIM-7I-LX7" secondAttribute="trailing" constant="23" id="gRt-yp-LZs"/>
                     <constraint firstItem="CIM-7I-LX7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="hog-j2-ite"/>
+                    <constraint firstItem="lLN-ZF-ZMk" firstAttribute="top" secondItem="WUj-XK-XpA" secondAttribute="bottom" constant="8" symbolic="YES" id="kv1-zC-eKt"/>
                     <constraint firstAttribute="bottom" secondItem="lLN-ZF-ZMk" secondAttribute="bottom" constant="8" id="nhd-XE-Ark"/>
                     <constraint firstItem="Jsg-i9-WDn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="37" id="sjA-a7-tNm"/>
+                    <constraint firstItem="WUj-XK-XpA" firstAttribute="top" secondItem="Jsg-i9-WDn" secondAttribute="bottom" constant="4" id="sjQ-lv-zB6"/>
                     <constraint firstItem="g7h-6T-T14" firstAttribute="leading" secondItem="CIM-7I-LX7" secondAttribute="trailing" constant="23" id="sy8-rj-jwq"/>
                 </constraints>
             </tableViewCellContentView>

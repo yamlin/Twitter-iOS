@@ -63,18 +63,6 @@ NSString * const twitterBaseUrl = @"https://api.twitter.com";
              self.loginCompletion(nil, error);
          }];
          
-//         [self GET:@"1.1/statuses/home_timeline.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//             NSLog(@"Get response: %@", responseObject);
-//             
-//             NSArray *tweets = [Tweet tweetsWithArray:responseObject];
-//             for (Tweet *tweet in tweets) {
-//                 NSLog(@"%@ %@", tweet.user.name, tweet.user.tagLine);
-//             }
-//             
-//         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//             NSLog(@"Error: %@", error.description);
-//         }];
-         
      } failure:^(NSError *error) {
          self.loginCompletion(nil, error);
 
@@ -138,6 +126,26 @@ NSString * const twitterBaseUrl = @"https://api.twitter.com";
     
 }
 
+- (void) profile:(User *)user completion:(void (^)(NSDictionary *resp, NSError *error))completion {
+    NSDictionary *params = @{@"user_id": user.uid, @"screen_name": user.screenName};
+   
+    [self GET:@"1.1/users/show.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        completion(responseObject, nil);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
 
+- (void) mentionsOnCompletion:(void (^)(NSArray *tweets, NSError *error)) completion {
+    [self GET:@"1.1/statuses/mentions_timeline.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
 
 @end

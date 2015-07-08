@@ -32,25 +32,34 @@
                     </constraints>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ZL-zF-sZV">
-                    <rect key="frame" x="30" y="138" width="272" height="213"/>
+                    <rect key="frame" x="18" y="162" width="284" height="213"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="3ZL-zF-sZV" secondAttribute="bottom" constant="217" id="ElI-1u-AQB"/>
-                <constraint firstItem="3ZL-zF-sZV" firstAttribute="top" secondItem="PYG-mo-Kwb" secondAttribute="bottom" constant="8" id="Pg6-mV-Iut"/>
+                <constraint firstAttribute="bottom" secondItem="3ZL-zF-sZV" secondAttribute="bottom" constant="193" id="ElI-1u-AQB"/>
+                <constraint firstItem="3ZL-zF-sZV" firstAttribute="top" secondItem="PYG-mo-Kwb" secondAttribute="bottom" constant="32" id="Pg6-mV-Iut"/>
                 <constraint firstItem="PYG-mo-Kwb" firstAttribute="top" secondItem="A2h-im-iE1" secondAttribute="top" id="RjD-ie-YYa"/>
                 <constraint firstItem="A2h-im-iE1" firstAttribute="leading" secondItem="PYG-mo-Kwb" secondAttribute="trailing" constant="19" id="Svx-qg-1N4"/>
                 <constraint firstItem="PYG-mo-Kwb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="TST-KN-H5w"/>
-                <constraint firstItem="3ZL-zF-sZV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="22" id="j9a-W0-xk1"/>
+                <constraint firstItem="3ZL-zF-sZV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" constant="10" id="j9a-W0-xk1"/>
                 <constraint firstItem="PYG-mo-Kwb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="82" id="mGB-ht-HFq"/>
                 <constraint firstAttribute="trailing" secondItem="3ZL-zF-sZV" secondAttribute="trailing" constant="18" id="q9a-sg-7QK"/>
             </constraints>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="Y7c-XJ-D0e" appends="YES" id="ob8-ab-iBI"/>
+            </connections>
             <point key="canvasLocation" x="307" y="235"/>
         </view>
+        <tapGestureRecognizer id="Y7c-XJ-D0e">
+            <connections>
+                <action selector="onTap:" destination="-1" id="9JC-Rp-5kf"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -14,11 +14,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
 @property (weak, nonatomic) IBOutlet UITextView *inputText;
 @property (weak, nonatomic) IBOutlet UILabel *tweetText;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *guestureRecognizer;
+
 
 @end
 
 @implementation ReplyTweetView
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,7 +37,9 @@
     self.userLabel.text = self.tweet.user.name;
     
     self.tweetText.text = self.tweet.text;
-   [self.inputText becomeFirstResponder];
+
+    self.inputText.layer.borderWidth = 0.5f;
+    self.inputText.layer.borderColor = [[UIColor blueColor] CGColor];
 }
 
 
@@ -56,14 +59,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)onTouched:(id)sender {
+    [self.inputText resignFirstResponder];
 }
-*/
 
 @end

@@ -34,8 +34,10 @@
     
     self.userLabel.text = self.user.name;
     
-    [self.inputText becomeFirstResponder];
     [self.userImage setImageWithURL: [NSURL URLWithString:self.user.profileImageUrl]];
+    
+    self.inputText.layer.borderWidth = 0.5f;
+    self.inputText.layer.borderColor = [[UIColor blueColor] CGColor];
 }
 
 
@@ -48,10 +50,7 @@
 }
 
 -(void)onCancel {
-    
     [self.navigationController popViewControllerAnimated:YES];
-
-//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -60,6 +59,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onTap:(id)sender {
+    [self.inputText resignFirstResponder];
+}
 
 
 /*

@@ -12,6 +12,7 @@
 #import "TwitterClient.h"
 #import "User.h"
 #import "Tweet.h"
+#import "MainVC.h"
 
 @interface AppDelegate ()
 
@@ -29,17 +30,18 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLogin) name:UserLoginNotification object:nil];
 
     
-    User *user = [User getUser];
+   
     UINavigationController *navgationController = [[UINavigationController alloc] init];
 
     self.window.rootViewController = navgationController;
 
     
+    User *user = [User getUser];
+    
     if (user != nil) {
         NSLog(@"User %@ login", user.name);
         [navgationController pushViewController:[[TweetViewController alloc]init] animated:YES];
-        
-        
+    
     } else {
         NSLog(@"User logout");
         [navgationController pushViewController:[[LoginViewController alloc] init] animated:YES];

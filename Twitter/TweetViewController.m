@@ -14,12 +14,21 @@
 #import "UIImageView+AFNetworking.h"
 #import "PostTweetView.h"
 #import "ReplyTweetView.h"
+#import "MenuViewController.h"
+#import "ProfileViewController.h"
+#import "MentionViewController.h"
 
 
-@interface TweetViewController () <UITableViewDataSource, UITableViewDelegate, PostTweetViewDelegate, TweetCellDelegate, ReplyTweetViewDelegate>
+@interface TweetViewController () <UITableViewDataSource, UITableViewDelegate, PostTweetViewDelegate, TweetCellDelegate, ReplyTweetViewDelegate, UIGestureRecognizerDelegate, MenuDelegate, MentionVCDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *tweets;
+
+@property (nonatomic, assign) CGPoint prePoint;
+
+@property (nonatomic, assign) BOOL showingMenu;
+
+@property (nonatomic, strong) MenuViewController *menuController;
 
 @end
 
@@ -39,13 +48,19 @@
     self.navigationItem.rightBarButtonItem = btnNew;
 
     
-    
     [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:@"TweetCell"];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    self.menuController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    self.menuController.delegate = self;
+
 
     [self reloadTweet];
+    
+    [self registerGesture];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -55,6 +70,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)registerGesture {
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(movePanel:)];
+    [panRecognizer setMinimumNumberOfTouches:1];
+    [panRecognizer setMaximumNumberOfTouches:1];
+    [panRecognizer setDelegate:self];
+    
+    [self.view addGestureRecognizer:panRecognizer];
 }
 
 - (void)reloadTweet {
@@ -69,6 +93,68 @@
             NSLog(@"Get tweet error: %@", error.description);
         }
     }];
+
+}
+
+- (void)hideMenu {
+    
+    if (self.menuController != nil) {
+        [self.menuController.view removeFromSuperview];
+    }
+    self.showingMenu = NO;
+}
+
+- (void)showMenu {
+    
+    if (self.menuController == nil) {
+        self.menuController = [[MenuViewController alloc] init];
+    }
+    
+    [self.view addSubview:self.menuController.view];
+    [self addChildViewController:self.menuController];
+    [self.menuController didMoveToParentViewController:self];
+    
+    self.menuController.view.frame = CGRectMake(0, 0, self.view.frame.size.width-100, self.view.frame.size.height);
+    
+    self.showingMenu = YES;
+}
+
+- (UIView *)getMenuView {
+    
+    if (self.menuController == nil) {
+        [self.view addSubview:self.menuController.view];
+        [self addChildViewController:self.menuController];
+        [self.menuController didMoveToParentViewController:self];
+        
+        self.menuController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        
+    }
+    self.showingMenu = YES;
+    return self.menuController.view;
+}
+
+- (void)movePanel:(UIPanGestureRecognizer *)panGestureRecognizer {
+    CGPoint point = [panGestureRecognizer locationInView:self.view];
+    
+    if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        self.prePoint = point;
+    } else if (panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+//        NSLog(@"Gesture changed: %@", NSStringFromCGPoint(point));
+    } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        //[self showMenu];
+        NSLog(@"%@, %@", NSStringFromCGPoint(self.prePoint), NSStringFromCGPoint(point));
+        if (self.showingMenu) {
+            if (self.prePoint.x > (point.x + 50)) {
+                NSLog(@"hide menu");
+                [self hideMenu];
+            }
+        } else {
+            if ((self.prePoint.x + 50) < point.x) {
+                NSLog(@"show menu");
+                [self showMenu];
+            }
+        }
+    }
 
 }
 
@@ -104,7 +190,7 @@
 
 #pragma mark - Navigation bar button
 - (void) onSignOut {
-    [User logout];
+    [User logout];  
 }
 
 - (void) onNew {
@@ -146,7 +232,7 @@
         }
 
         // pop up the post view
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
 
         [self reloadTweet];
     }];
@@ -155,7 +241,7 @@
 #pragma mark - Reply Delegate 
 - (void)onReply:(NSString *)replyText withTweet:(Tweet *)tweet {
     NSLog(@"id: %@, %@", tweet.tweedId, replyText);
-    NSDictionary *params = @{@"status": replyText, @"in_reply_to_status_id": @"615894628668059648" };
+    NSDictionary *params = @{@"status": replyText, @"in_reply_to_status_id": tweet.tweedId };
     [[TwitterClient sharedInstance] tweet:params completion:^(NSError *error) {
         if (error != nil) {
             NSLog(@"Reply Tweet Error: %@", error.description);
@@ -170,14 +256,26 @@
 
     }];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - Menu Delegate
+- (void)onProfile {
+    NSLog(@"onProfile");
+    
+    [self hideMenu];
+    //[self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController pushViewController:[[ProfileViewController alloc] init] animated:YES];
 }
-*/
+
+- (void)onTwitterView {
+    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController pushViewController:[[TweetViewController alloc] init] animated:YES];
+}
+
+
+#pragma mark - Mention View Delegate
+-(void)onMentionView {
+    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController pushViewController:[[MentionViewController alloc] init] animated:YES];
+}
 
 @end

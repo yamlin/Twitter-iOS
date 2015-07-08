@@ -21,4 +21,9 @@
 - (void) favorite:(BOOL)flag withId:(NSString *)tweetId completion:(void (^)(NSError *error))completion;
 - (void) retweetWithId:(NSString *)tweetId completion:(void (^)(NSError *error))completion;
 - (void) tweet:(NSDictionary *)params completion:(void (^)(NSError *error))completion;
+
+- (void) profile:(User *)user completion:(void (^)(NSDictionary *resp, NSError *error)) completion;
+
+- (void) mentionsOnCompletion:(void (^)(NSArray *tweets, NSError *error)) completion;
+
 @end
