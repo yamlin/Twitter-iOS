@@ -34,6 +34,10 @@
     // Initialization code
 }
 
+- (IBAction)onClick:(id)sender {    
+    [self.delegate onProfile:self.tweetInfo.user];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

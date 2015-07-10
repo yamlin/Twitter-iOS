@@ -22,8 +22,8 @@
     [[TwitterClient sharedInstance] loginWithCompletion:^(User *user, NSError *error) {
         if (user != nil) {
             // show twitter
-            [self.navigationController popToRootViewControllerAnimated:NO];
-            [self.navigationController pushViewController:[[TweetViewController alloc] init] animated:YES];
+            [self.delegate onLogin];
+            
         } else {
             // show error
             NSLog(@"OAuth error: %@", error.description);
@@ -46,14 +46,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

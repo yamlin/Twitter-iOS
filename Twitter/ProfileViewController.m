@@ -26,12 +26,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    User *user = [User getUser];
-    self.userLabel.text = user.name;
-    [self.userImage setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
     
     
-    [[TwitterClient sharedInstance] profile:[User getUser] completion:^(NSDictionary *resp, NSError *error) {
+    self.userLabel.text = self.user.name;
+    [self.userImage setImageWithURL:[NSURL URLWithString:self.user.profileImageUrl]];
+    
+    
+    [[TwitterClient sharedInstance] profile:self.user completion:^(NSDictionary *resp, NSError *error) {
          
         if (error == nil) {
             self.followersLabel.text = [NSString stringWithFormat:@"%@ followers", resp[@"followers_count"]];

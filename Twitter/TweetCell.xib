@@ -18,6 +18,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CIM-7I-LX7">
                         <rect key="frame" x="8" y="8" width="69" height="69"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="69" id="NYX-0D-6GI"/>
                             <constraint firstAttribute="height" constant="69" id="QQk-Gw-3lW"/>
                         </constraints>
                     </imageView>
@@ -81,6 +82,19 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdO-zh-9re">
+                        <rect key="frame" x="8" y="8" width="69" height="69"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="69" id="lDP-yL-pak"/>
+                            <constraint firstAttribute="height" constant="69" id="y9o-jy-lg0"/>
+                        </constraints>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="onClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uON-Ik-OCo"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="dL7-zr-hcQ" firstAttribute="leading" secondItem="Jsg-i9-WDn" secondAttribute="leading" constant="124" id="2VP-5h-GNK"/>
@@ -95,15 +109,16 @@
                     <constraint firstItem="WUj-XK-XpA" firstAttribute="leading" secondItem="CIM-7I-LX7" secondAttribute="trailing" constant="8" id="ONd-vj-PXN"/>
                     <constraint firstItem="WUj-XK-XpA" firstAttribute="firstBaseline" secondItem="nxV-wH-sCd" secondAttribute="firstBaseline" id="Olp-h3-z5Q"/>
                     <constraint firstItem="WUj-XK-XpA" firstAttribute="top" secondItem="21c-kM-Cdb" secondAttribute="top" id="Tbq-h5-o93"/>
+                    <constraint firstItem="qdO-zh-9re" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="V7G-XT-fda"/>
                     <constraint firstItem="lLN-ZF-ZMk" firstAttribute="top" secondItem="CIM-7I-LX7" secondAttribute="bottom" constant="14" id="WfP-8U-kpv"/>
                     <constraint firstItem="nxV-wH-sCd" firstAttribute="leading" secondItem="21c-kM-Cdb" secondAttribute="trailing" constant="36" id="X8e-iT-uoj"/>
                     <constraint firstAttribute="trailingMargin" secondItem="dL7-zr-hcQ" secondAttribute="trailing" constant="-38" id="Y0s-nZ-Z2j"/>
                     <constraint firstItem="g7h-6T-T14" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Yyd-yq-lEG"/>
+                    <constraint firstItem="qdO-zh-9re" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="bcz-JS-HDC"/>
                     <constraint firstItem="WUj-XK-XpA" firstAttribute="top" secondItem="nxV-wH-sCd" secondAttribute="top" id="bgX-XP-2k0"/>
                     <constraint firstItem="dL7-zr-hcQ" firstAttribute="top" secondItem="Jsg-i9-WDn" secondAttribute="bottom" constant="-12" id="c78-0u-hym"/>
                     <constraint firstItem="WUj-XK-XpA" firstAttribute="firstBaseline" secondItem="21c-kM-Cdb" secondAttribute="firstBaseline" id="csF-ND-5jW"/>
                     <constraint firstAttribute="trailing" secondItem="Jsg-i9-WDn" secondAttribute="trailing" constant="133" id="eXD-L5-opn"/>
-                    <constraint firstItem="Jsg-i9-WDn" firstAttribute="leading" secondItem="CIM-7I-LX7" secondAttribute="trailing" constant="23" id="gRt-yp-LZs"/>
                     <constraint firstItem="CIM-7I-LX7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="hog-j2-ite"/>
                     <constraint firstItem="lLN-ZF-ZMk" firstAttribute="top" secondItem="WUj-XK-XpA" secondAttribute="bottom" constant="8" symbolic="YES" id="kv1-zC-eKt"/>
                     <constraint firstAttribute="bottom" secondItem="lLN-ZF-ZMk" secondAttribute="bottom" constant="8" id="nhd-XE-Ark"/>

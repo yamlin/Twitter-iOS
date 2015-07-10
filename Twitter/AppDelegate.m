@@ -26,52 +26,17 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLogout) name:UserLogoutNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onLogin) name:UserLoginNotification object:nil];
-
+       
+    MainVC *mainVC = [[MainVC alloc] init];;
+  
     
-   
-    UINavigationController *navgationController = [[UINavigationController alloc] init];
-
-    self.window.rootViewController = navgationController;
-
-    
-    User *user = [User getUser];
-    
-    if (user != nil) {
-        NSLog(@"User %@ login", user.name);
-        [navgationController pushViewController:[[TweetViewController alloc]init] animated:YES];
-    
-    } else {
-        NSLog(@"User logout");
-        [navgationController pushViewController:[[LoginViewController alloc] init] animated:YES];
-    }
-    
+    UINavigationController *navigation = [[UINavigationController alloc] init];
+    [navigation pushViewController:mainVC animated:YES];
+    self.window.rootViewController = navigation;
     [self.window makeKeyAndVisible];
 
    
     return YES;
-}
-
-- (void)onLogout {
-    NSLog(@"User logout");
-
-    UINavigationController *navgationController = [[UINavigationController alloc] init];
-    
-    self.window.rootViewController = navgationController;
-
-    [navgationController pushViewController: [[LoginViewController alloc] init] animated:YES];
-
-}
-
-- (void)onLogin {
-    NSLog(@"User login");
-    
-    UINavigationController *navgationController = [[UINavigationController alloc] init];
-    
-    self.window.rootViewController = navgationController;
-    
-    [navgationController pushViewController: [[TweetViewController alloc] init] animated:YES];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

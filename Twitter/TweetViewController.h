@@ -7,7 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
+#import "Tweet.h"
+
+@class TweetViewController;
+
+
+@protocol TweetViewDelegate <NSObject>
+
+- (void)getUserProfile:(User *) user;
+
+- (void)showReplyView:(Tweet *)tweet;
+
+- (void)postTweet:(NSDictionary *)params;
+
+@end
 
 @interface TweetViewController : UIViewController
 
+@property(strong, nonatomic) NSArray *tweets;
+
+@property(strong, nonatomic) id<TweetViewDelegate> delegate;
 @end

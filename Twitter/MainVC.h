@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MainVC : UIViewController
-
+@property (strong, nonatomic) UIViewController *currentVC;
+- (void)setView;
 @end

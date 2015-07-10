@@ -14,7 +14,8 @@
 
 @protocol TweetCellDelegate<NSObject>
 
-- (void) replyTweet:(Tweet *) tweet;
+- (void)replyTweet:(Tweet *) tweet;
+- (void)onProfile:(User *) user;
 
 @end
 
