@@ -55,6 +55,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)removeAllSubviews {
+    
+    for (UIView *v in self.view.subviews) {
+        [v removeFromSuperview];
+    }
+    UIViewController *vc = [self.childViewControllers lastObject];
+    [vc willMoveToParentViewController:nil];
+    [vc.view removeFromSuperview];
+    [vc removeFromParentViewController];
+}
+
 - (void)setView {
     
     // hide the menu
@@ -78,6 +89,9 @@
         vc.delegate = self;
         self.currentVC = vc;
     }
+    
+    // remove subviews
+    //[self removeAllSubviews];
     
     // add to subview
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:self.currentVC];
@@ -222,8 +236,7 @@
 
 - (void)onLogin {
     NSLog(@"onLogin");
-    self.currentVC = [[TweetViewController alloc] init];
-    [self setView];
+    [self onTwitterView];
 
 }
 
